@@ -2,15 +2,15 @@ package com.sushi.dao;
 
 import java.util.List;
 
-import com.sushi.model.Message;
+import com.sushi.model.Bet;
 import com.sushi.model.User;
 
-public interface MessageDao {
-	List<Message> getUserTimelineMessages(User user);
+public interface BetDao {
+	List<Bet> getUserTimelineMessages(User user);
 	
-	List<Message> getUserFullTimelineMessages(User user);
+	List<Bet> getUserFullTimelineMessages(User user);
 	
-	List<Message> getPublicTimelineMessages();
+	List<Bet> getPublicTimelineMessages();
 	
-	void insertMessage(Message m);
+	void insertMessage(Bet m);
 }

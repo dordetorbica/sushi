@@ -16,7 +16,7 @@ import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
 import com.sushi.model.LoginResult;
-import com.sushi.model.Message;
+import com.sushi.model.Bet;
 import com.sushi.model.User;
 import com.sushi.service.impl.SushiService;
 
@@ -58,7 +58,7 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Timeline");
 			map.put("user", user);
-			List<Message> messages = service.getUserFullTimelineMessages(user);
+			List<Bet> messages = service.getUserFullTimelineMessages(user);
 			map.put("messages", messages);
 			return new ModelAndView(map, "timeline.ftl");
         }, new FreeMarkerEngine());
@@ -90,7 +90,7 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Public Timeline");
 			map.put("user", user);
-			List<Message> messages = service.getPublicTimelineMessages();
+			List<Bet> messages = service.getPublicTimelineMessages();
 			map.put("messages", messages);
 			return new ModelAndView(map, "timeline.ftl");
         }, new FreeMarkerEngine());
@@ -108,7 +108,7 @@ public class WebConfig {
 			if(authUser != null) {
 				followed = service.isUserFollower(authUser, profileUser);
 			}
-			List<Message> messages = service.getUserTimelineMessages(profileUser);
+			List<Bet> messages = service.getUserTimelineMessages(profileUser);
 			
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", username + "'s Timeline");
@@ -291,7 +291,7 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			MultiMap<String> params = new MultiMap<String>();
 			UrlEncoded.decodeTo(req.body(), params, "UTF-8");
-			Message m = new Message();
+			Bet m = new Bet();
 			m.setUserId(user.getId());
 			m.setPubDate(new Date());
 			BeanUtils.populate(m, params);

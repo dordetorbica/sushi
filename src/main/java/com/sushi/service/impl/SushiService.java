@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sushi.dao.MessageDao;
+import com.sushi.dao.BetDao;
 import com.sushi.dao.UserDao;
 import com.sushi.model.LoginResult;
-import com.sushi.model.Message;
+import com.sushi.model.Bet;
 import com.sushi.model.User;
 import com.sushi.util.PasswordUtil;
 
@@ -19,18 +19,18 @@ public class SushiService {
 	private UserDao userDao;
 	
 	@Autowired
-	private MessageDao messageDao;
+	private BetDao betDao;
 	
-	public List<Message> getUserFullTimelineMessages(User user) {
-		return messageDao.getUserFullTimelineMessages(user);
+	public List<Bet> getUserFullTimelineMessages(User user) {
+		return betDao.getUserFullTimelineMessages(user);
 	}
 	
-	public List<Message> getUserTimelineMessages(User user) {
-		return messageDao.getUserTimelineMessages(user);
+	public List<Bet> getUserTimelineMessages(User user) {
+		return betDao.getUserTimelineMessages(user);
 	}
 	
-	public List<Message> getPublicTimelineMessages() {
-		return messageDao.getPublicTimelineMessages();
+	public List<Bet> getPublicTimelineMessages() {
+		return betDao.getPublicTimelineMessages();
 	}
 	
 	public User getUserbyUsername(String username) {
@@ -49,8 +49,8 @@ public class SushiService {
 		return userDao.isUserFollower(follower, followee);
 	}
 	
-	public void addMessage(Message message) {
-		messageDao.insertMessage(message);
+	public void addMessage(Bet message) {
+		betDao.insertMessage(message);
 	}
 	
 	public LoginResult checkUser(User user) {
@@ -76,7 +76,7 @@ public class SushiService {
 		this.userDao = userDao;
 	}
 
-	public void setMessageDao(MessageDao messageDao) {
-		this.messageDao = messageDao;
+	public void setBetDao(BetDao messageDao) {
+		this.betDao = messageDao;
 	}
 }

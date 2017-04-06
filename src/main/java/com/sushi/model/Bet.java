@@ -3,7 +3,7 @@ package com.sushi.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Message {
+public class Bet {
 	private int id;
 	
 	private int userId;
