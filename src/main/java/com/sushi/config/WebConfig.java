@@ -44,6 +44,10 @@ public class WebConfig {
 		 *  This timeline shows the user's messages as well
 		 *  as all the messages of followed users.
 		 */
+		get("/bets", (req, res) -> {
+			Map<String, Object> map = new HashMap<>();
+			return new ModelAndView(map, "openbets.ftl");
+		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
