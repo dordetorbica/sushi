@@ -1,4 +1,4 @@
-package com.minitwit.dao.impl;
+package com.sushi.dao.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.minitwit.dao.UserDao;
-import com.minitwit.model.User;
+import com.sushi.dao.UserDao;
+import com.sushi.model.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
