@@ -1,5 +1,5 @@
 INSERT INTO user(username, name, email, pw) VALUES ('admin','Administrator','admin@email.com','$2y$10$Yxe35TaNxLErDLmpDHrZxOIMT8P74qQGb5NER2TcRKSEDSb0KUn6G');
-INSERT INTO user(username, name, email, pw) VALUES ('dorde','Dorde Torbica','dorde.torbica@ctbto.org','$2y$10$dUFLtk8yqsicQ584aI/ZY.7exvxpmZ4zC/mzDlOyT4X.9pI0tge6C');
+INSERT INTO user(username, name, email, pw) VALUES ('dorde','Dorde Torbica','dorde.torbica@ctbto.org','$2a$10$IHdRfnhNgQesPFD5hrUcMOvyx5RrRcklkpXfs9YX4j1qXvouEeVIa');
 INSERT INTO user(username, name, email, pw) VALUES ('helmuth','Helmuth Breitenfellner','helmuth.breitenfellner@ctbto.org','$2y$10$uI5YpyM9n0thdAukWiZnJuEKBJu4ilvLcYySGQlkR6abdOYy/jyBi');
 INSERT INTO user(username, name, email, pw) VALUES ('cahya','Cahya Wirawam','cahya.wirawam@ctbto.org','$2y$10$iiwpwY74t6Xyp809hmHLu.9N0WYYdEzny54aoSXNq./hKyA.b9rfy');
 INSERT INTO user(username, name, email, pw) VALUES ('albert','Albert Brouwer','albert.brouwer@ctbto.org','$2y$10$BHy3WJMQ5WWHISVH66EUR.0fnREqGGqdwHzyWDX7Wa4FTFOwMyRRW');
