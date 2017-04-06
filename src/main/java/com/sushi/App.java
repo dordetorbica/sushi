@@ -1,14 +1,14 @@
-package com.minitwit;
+package com.sushi;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.minitwit.config.WebConfig;
-import com.minitwit.service.impl.MiniTwitService;
+import com.sushi.config.WebConfig;
+import com.sushi.service.impl.MiniTwitService;
 
 @Configuration
-@ComponentScan({ "com.minitwit" })
+@ComponentScan({ "com.sushi" })
 public class App {
 	
 	public static void main(String[] args) {

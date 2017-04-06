@@ -1,16 +1,16 @@
-package com.minitwit.service.impl;
+package com.sushi.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.minitwit.dao.MessageDao;
-import com.minitwit.dao.UserDao;
-import com.minitwit.model.LoginResult;
-import com.minitwit.model.Message;
-import com.minitwit.model.User;
-import com.minitwit.util.PasswordUtil;
+import com.sushi.dao.MessageDao;
+import com.sushi.dao.UserDao;
+import com.sushi.model.LoginResult;
+import com.sushi.model.Message;
+import com.sushi.model.User;
+import com.sushi.util.PasswordUtil;
 
 @Service
 public class MiniTwitService {
