@@ -55,8 +55,10 @@
     </ul>
   </div>
 </nav>
+<div class="p-3">
 
 		  		<#nested />
+		  		</div>
     </body>
     </html>
 </#macro>
