@@ -9,6 +9,8 @@
     </#if>
     <form action="/register" method="post">
     <dl>
+      <dt>Name:
+      <dd><input type="text" name="name" maxlength="50" size="50" value="${name!}">
       <dt>Username:
       <dd><input type="text" name="username" maxlength="50" size="30" value="${username!}">
       <dt>E-Mail:
