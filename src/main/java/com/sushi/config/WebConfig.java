@@ -6,6 +6,7 @@ import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +49,21 @@ public class WebConfig {
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			List<Bet> bets = service.getAllBets();
+			List<User> users = service.getAllUsers();
+			List<Map<String, Object>> data = new ArrayList<>();
+			for (Bet bet : bets) {
+				HashMap<String, Object> hm = new HashMap<>();
+				hm.put("title",  bet.getTitle());
+				for (User user : users) {
+					if (user.getId() == bet.getInitiator_id()) {
+						hm.put("initiator", user.getUsername());
+					}
+					if (user.getId() == bet.getChallenger_id()) {
+						hm.put("challenger", user.getUsername());
+					}
+				}
+				data.add(hm);
+			}
 			map.put("bets", bets);
 			return new ModelAndView(map, "openbets.ftl");
 		}, new FreeMarkerEngine());

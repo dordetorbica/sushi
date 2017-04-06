@@ -15,8 +15,8 @@
 <#list bets as bet>
     <tr>
       <td>${bet.title}</td>
-      <td>${bet.initiator_id}</td>
-      <td>${bet.challenger_id}</td>
+      <td>${bet.initiator}</td>
+      <td>${bet.challenger}</td>
       <td><i class="fa fa-close"></i> <i class="fa fa-trash"></i></td>
     </tr>
 </#list>
