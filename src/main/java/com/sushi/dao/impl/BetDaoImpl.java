@@ -18,8 +18,6 @@ import com.sushi.model.User;
 @Repository
 public class BetDaoImpl implements BetDao {
 	
-	private static final String GRAVATAR_DEFAULT_IMAGE_TYPE = "monsterid";
-	private static final int GRAVATAR_SIZE = 48;
 	private NamedParameterJdbcTemplate template;
 
 	@Autowired
@@ -39,13 +37,14 @@ public class BetDaoImpl implements BetDao {
 
 
 	@Override
-	public void insertMessage(Bet m) {
+	public void placeBet(Bet m) {
 		Map<String, Object> params = new HashMap<String, Object>();
-       // params.put("userId", m.getUserId());
-       // params.put("text", m.getText());
-       // params.put("pubDate", m.getPubDate());
-        
-        String sql = "insert into message (author_id, text, pub_date) values (:userId, :text, :pubDate)";
+        params.put("init", m.getInitiator_id());
+        params.put("title", m.getTitle());
+        params.put("desc", m.getDescription());
+        params.put("pubDate", m.getPub_date());
+                
+        String sql = "insert into bet(initiator_id, title, description, pub_date) values (:init, :title,:desc, :pubDate)";
 		template.update(sql, params);
 	}
 	

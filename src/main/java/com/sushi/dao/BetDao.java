@@ -6,7 +6,7 @@ import com.sushi.model.Bet;
 import com.sushi.model.User;
 
 public interface BetDao {	
-	void insertMessage(Bet m);
-
+	
+	void placeBet(Bet m);
 	List<Bet> getAllBets();
 }

@@ -296,7 +296,7 @@ public class WebConfig {
 			//m.setUserId(user.getId());
 			//m.setPubDate(new Date());
 			BeanUtils.populate(m, params);
-			service.addMessage(m);
+			service.placeBet(m);
 			res.redirect("/");
 			return null;
         });

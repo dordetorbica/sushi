@@ -42,8 +42,8 @@ public class SushiService {
 		return userDao.isUserFollower(follower, followee);
 	}
 	
-	public void addMessage(Bet message) {
-		betDao.insertMessage(message);
+	public void placeBet(Bet message) {
+		betDao.placeBet(message);
 	}
 	
 	public LoginResult checkUser(User user) {
