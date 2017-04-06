@@ -33,6 +33,10 @@ public class SushiService {
 		return userDao.getUserbyUsername(username);
 	}
 
+	public User getUserbyId(int id) {
+		return userDao.getUserbyId(id);
+	}
+
 	public void addMessage(Bet message) {
 		betDao.insertMessage(message);
 	}

@@ -48,25 +48,20 @@ public class WebConfig {
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			List<Bet> bets = service.getAllBets();
-			List<User> users = service.getAllUsers();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
 				if (bet.getChallenger_id() > 0) {
 				HashMap<String, Object> hm = new HashMap<>();
+				int initiator_id = bet.getInitiator_id();
+				int challenger_id = bet.getChallenger_id();
+				String initiator = service.getUserbyId(initiator_id).getName();
+				String challenger = service.getUserbyId(challenger_id).getName();
 				hm.put("title",  bet.getTitle());
 				hm.put("bet_id", bet.getBet_id());
-				hm.put("initiator_id",  Integer.toString(bet.getInitiator_id()));
-				hm.put("challenger_id",  Integer.toString(bet.getChallenger_id()));
-				hm.put("initiator", Integer.toString(bet.getInitiator_id()));
-				hm.put("challenger", Integer.toString(bet.getChallenger_id()));
-				for (User user : users) {
-					if (user.getId() == bet.getInitiator_id()) {
-						hm.put("initiator", user.getName());
-					}
-					if (user.getId() == bet.getChallenger_id()) {
-						hm.put("challenger", user.getName());
-					}
-				}
+				hm.put("initiator_id",  Integer.toString(initiator_id));
+				hm.put("challenger_id",  Integer.toString(challenger_id));				
+				hm.put("initiator", initiator);
+				hm.put("challenger", challenger);
 				data.add(hm);
 				}
 			}
