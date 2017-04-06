@@ -1,0 +1,23 @@
+#macro(mainLayout)
+<html>
+<head>
+    <title>SUSHI APP</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" href="/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+        header
+</header>
+<main>
+    <div id="content">
+        $bodyContent
+    </div>
+</main>
+<footer>
+   footer
+</footer>
+</body>
+</html>
+#end
