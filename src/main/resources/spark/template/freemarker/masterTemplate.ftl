@@ -48,13 +48,14 @@
         <a class="nav-link" href="#">Decide a Bet</a>
       </li>
     </ul>
-    <#if !user??>
     <ul class="navbar-nav navbar-right pull-right mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
     </ul>
-    </#if>
   </div>
 </nav>
 <div class="p-3">
