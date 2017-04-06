@@ -5,12 +5,8 @@ import java.util.List;
 import com.sushi.model.Bet;
 import com.sushi.model.User;
 
-public interface BetDao {
-	List<Bet> getUserTimelineMessages(User user);
-	
-	List<Bet> getUserFullTimelineMessages(User user);
-	
-	List<Bet> getPublicTimelineMessages();
-	
+public interface BetDao {	
 	void insertMessage(Bet m);
+
+	List<Bet> getAllBets();
 }

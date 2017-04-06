@@ -21,17 +21,10 @@ public class SushiService {
 	@Autowired
 	private BetDao betDao;
 	
-	public List<Bet> getUserFullTimelineMessages(User user) {
-		return betDao.getUserFullTimelineMessages(user);
+	public List<Bet> getAllBets() {
+		return betDao.getAllBets();
 	}
 	
-	public List<Bet> getUserTimelineMessages(User user) {
-		return betDao.getUserTimelineMessages(user);
-	}
-	
-	public List<Bet> getPublicTimelineMessages() {
-		return betDao.getPublicTimelineMessages();
-	}
 	
 	public User getUserbyUsername(String username) {
 		return userDao.getUserbyUsername(username);
