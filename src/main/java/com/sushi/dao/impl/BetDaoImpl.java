@@ -13,13 +13,10 @@ import org.springframework.stereotype.Repository;
 
 import com.sushi.dao.BetDao;
 import com.sushi.model.Bet;
-import com.sushi.model.User;
 
 @Repository
 public class BetDaoImpl implements BetDao {
 	
-	private static final String GRAVATAR_DEFAULT_IMAGE_TYPE = "monsterid";
-	private static final int GRAVATAR_SIZE = 48;
 	private NamedParameterJdbcTemplate template;
 
 	@Autowired
