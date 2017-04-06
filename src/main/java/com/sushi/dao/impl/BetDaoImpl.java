@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import com.sushi.dao.BetDao;
 import com.sushi.model.Bet;
 import com.sushi.model.User;
-import com.sushi.util.GravatarUtil;
 
 @Repository
 public class BetDaoImpl implements BetDao {
