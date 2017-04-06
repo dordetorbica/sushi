@@ -1,6 +1,6 @@
 <#import "masterTemplate.ftl" as layout />
 
-<@layout.masterTemplate title="Timeline">
+<@layout.masterTemplate title="Running Bets">
     <h2>${pageTitle}</h2>
     <#if user??>
     	<#if profileUser?? && user.id != profileUser.id>
