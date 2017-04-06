@@ -2,6 +2,8 @@
 
 <@layout.masterTemplate title="Sign In">
     <h2>Sign In</h2>
+    <p>Not yet a user?<br>
+    <a href="/register">Register here</a></p>
     <#if message??>
     	<div class="success">
     		${message}
