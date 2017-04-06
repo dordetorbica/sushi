@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sushi.dao.UserDao;
-import com.sushi.model.Bet;
 import com.sushi.model.User;
 
 @Repository
