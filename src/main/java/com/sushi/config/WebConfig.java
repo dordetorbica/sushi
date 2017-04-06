@@ -48,6 +48,10 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			return new ModelAndView(map, "openbets.ftl");
 		}, new FreeMarkerEngine());
+		get("/add-bet", (req, res) -> {
+			Map<String, Object> map = new HashMap<>();
+			return new ModelAndView(map, "add-bet.ftl");
+		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();

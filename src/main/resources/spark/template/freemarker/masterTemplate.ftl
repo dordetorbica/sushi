@@ -42,7 +42,7 @@
         <a class="nav-link" href="#">Available Offers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Add a Bet</a>
+        <a class="nav-link" href="/add-bet">Add a Bet</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Decide a Bet</a>
