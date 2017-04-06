@@ -47,6 +47,8 @@ public class WebConfig {
 		 */
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			List<Bet> bets = service.getAllBets();
+			map.put("bets", bets);
 			return new ModelAndView(map, "openbets.ftl");
 		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {

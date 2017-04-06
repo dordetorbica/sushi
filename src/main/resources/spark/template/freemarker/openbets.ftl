@@ -1,6 +1,7 @@
 <#import "masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Running Bets">
+<#if bets??>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -11,48 +12,20 @@
     </tr>
   </thead>
   <tbody>
+<#list bets as bet>
     <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i>
+      <td>${bet.title}</td>
+      <td>${bet.initiator_id}</td>
+      <td>${bet.challenger_id}</td>
+      <td><i class="fa fa-close"></i> <i class="fa fa-trash"></i></td>
     </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
-    <tr>
-      <td>Trump will stay in office for at least four full years as elected</td>
-      <td>Helmuth</td>
-      <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
-    </tr>
+</#list>
   </tbody>
 </table>
+<#else>
+<h2>No Bets available</h2>
+<p>
+Currently no bets are available. Want to add some?
+</p>
+</#if>
 </@layout.masterTemplate>
