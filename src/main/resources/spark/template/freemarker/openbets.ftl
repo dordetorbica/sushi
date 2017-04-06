@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Bet</th>
       <th>In Favor</th>
       <th>Against</th>
@@ -14,10 +15,11 @@
   <tbody>
 <#list bets as bet>
     <tr>
+      <td>${bet.bet_id}</td>
       <td>${bet.title}</td>
       <td>${bet.initiator}</td>
       <td>${bet.challenger}</td>
-      <td><i class="fa fa-close"></i> <i class="fa fa-trash"></i></td>
+      <td><i class="fa fa-close"></i> <a href="/edit-bet?${bet.bet_id}"><i class="fa fa-pencil"></a></i> <i class="fa fa-trash"></i></td>
     </tr>
 </#list>
   </tbody>
