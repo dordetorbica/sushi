@@ -51,8 +51,14 @@ public class WebConfig {
 			List<User> users = service.getAllUsers();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
+				if (bet.getChallenger_id() > 0) {
 				HashMap<String, Object> hm = new HashMap<>();
 				hm.put("title",  bet.getTitle());
+				hm.put("bet_id", bet.getBet_id());
+				hm.put("initiator_id",  Integer.toString(bet.getInitiator_id()));
+				hm.put("challenger_id",  Integer.toString(bet.getChallenger_id()));
+				hm.put("initiator", Integer.toString(bet.getInitiator_id()));
+				hm.put("challenger", Integer.toString(bet.getChallenger_id()));
 				for (User user : users) {
 					if (user.getId() == bet.getInitiator_id()) {
 						hm.put("initiator", user.getUsername());
@@ -62,8 +68,9 @@ public class WebConfig {
 					}
 				}
 				data.add(hm);
+				}
 			}
-			map.put("bets", bets);
+			map.put("bets", data);
 			return new ModelAndView(map, "openbets.ftl");
 		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
