@@ -18,7 +18,7 @@ import org.eclipse.jetty.util.UrlEncoded;
 import com.sushi.model.LoginResult;
 import com.sushi.model.Message;
 import com.sushi.model.User;
-import com.sushi.service.impl.MiniTwitService;
+import com.sushi.service.impl.SushiService;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -28,10 +28,10 @@ import spark.utils.StringUtils;
 public class WebConfig {
 	
 	private static final String USER_SESSION_ID = "user";
-	private MiniTwitService service;
+	private SushiService service;
 	 
 
-	public WebConfig(MiniTwitService service) {
+	public WebConfig(SushiService service) {
 		this.service = service;
 		staticFileLocation("/public");
 		setupRoutes();

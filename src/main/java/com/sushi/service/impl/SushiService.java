@@ -13,7 +13,7 @@ import com.sushi.model.User;
 import com.sushi.util.PasswordUtil;
 
 @Service
-public class MiniTwitService {
+public class SushiService {
 	
 	@Autowired
 	private UserDao userDao;
