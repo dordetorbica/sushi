@@ -58,13 +58,8 @@ public class WebConfig {
 			return new ModelAndView(map, "edit-bet.ftl");
 		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Timeline");
-			map.put("user", user);
-			List<Bet> messages = service.getAllBets();
-			map.put("messages", messages);
-			return new ModelAndView(map, "timeline.ftl");
+			res.redirect("/bets");
+			return null;
         }, new FreeMarkerEngine());
 		/*
 		 * Presents the login form or redirect the user to
