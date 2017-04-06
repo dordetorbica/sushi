@@ -61,10 +61,10 @@ public class WebConfig {
 				hm.put("challenger", Integer.toString(bet.getChallenger_id()));
 				for (User user : users) {
 					if (user.getId() == bet.getInitiator_id()) {
-						hm.put("initiator", user.getUsername());
+						hm.put("initiator", user.getName());
 					}
 					if (user.getId() == bet.getChallenger_id()) {
-						hm.put("challenger", user.getUsername());
+						hm.put("challenger", user.getName());
 					}
 				}
 				data.add(hm);
