@@ -5,12 +5,6 @@ INSERT INTO user(username, name, email, pw) VALUES ('helmuth','Helmuth Breitenfe
 INSERT INTO user(username, name, email, pw) VALUES ('cahya','Cahya Wirawam','cahya.wirawam@ctbto.org','$2y$10$iiwpwY74t6Xyp809hmHLu.9N0WYYdEzny54aoSXNq./hKyA.b9rfy');
 INSERT INTO user(username, name, email, pw) VALUES ('albert','Albert Brouwer','albert.brouwer@ctbto.org','$2y$10$BHy3WJMQ5WWHISVH66EUR.0fnREqGGqdwHzyWDX7Wa4FTFOwMyRRW');
 INSERT INTO user(username, name, email, pw) VALUES ('benoit','Benoit Doury','benoit.doury@ctbto.org','$2y$10$l19IZfLnmaqRBCK96QqFJubM7osZcXVjX.1uTe0Ecq2oyfjWc0trC');
-=======
-INSERT INTO user(username, name, email, pw) VALUES ('admin','Administrator','admin@email.com','admin');
-INSERT INTO user(username, name, email, pw) VALUES ('dorde','Dorde Torbica','dorde.torbica@ctbto.org','$2a$10$IHdRfnhNgQesPFD5hrUcMOvyx5RrRcklkpXfs9YX4j1qXvouEeVIa');
-INSERT INTO user(username, name, email, pw) VALUES ('helmuth','Helmuth Breitenfellner','helmuth.breitenfellner@ctbto.org','helmuth');
-INSERT INTO user(username, name, email, pw) VALUES ('Cahya','Cahya Wirawam','cahya.wirawam@ctbto.org','');
->>>>>>> branch 'master' of https://github.com/dordetorbica/sushi/
 
 INSERT INTO bet(initiator_id, title, description, pub_date) VALUES (100, 'Donald Trump bet', 'Donald Trump will remain president until the end of his term.', TIMESTAMP '2017-04-06 02:00:22');
 INSERT INTO bet(initiator_id, challenger_id, title, description, pub_date) VALUES (100, 101, 'Winning Scrum Team bet', 'Team sushi will win this contest', TIMESTAMP '2017-04-06 02:00:22');
