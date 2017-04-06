@@ -25,6 +25,7 @@ import spark.Request;
 import spark.template.freemarker.FreeMarkerEngine;
 import spark.utils.StringUtils;
 
+
 public class WebConfig {
 	
 	private static final String USER_SESSION_ID = "user";
@@ -61,10 +62,21 @@ public class WebConfig {
 			map.put("messages", messages);
 			return new ModelAndView(map, "timeline.ftl");
         }, new FreeMarkerEngine());
+		/*
+		 * Presents the login form or redirect the user to
+		 * her timeline if it's already logged in
+		 */
+		get("/login", (req, res) -> {
+			Map<String, Object> map = new HashMap<>();
+			if(req.queryParams("r") != null) {
+				map.put("message", "You were successfully registered and can login now");
+			}
+			return new ModelAndView(map, "login.ftl");
+        }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
-				res.redirect("/public");
+				res.redirect("/login");
 				halt();
 			}
 		});
