@@ -54,42 +54,7 @@ public class UserDaoImpl implements UserDao {
         
 		return result;
 	}
-
-	@Override
-	public void insertFollower(User follower, User followee) {
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("follower", follower.getId());
-        params.put("followee", followee.getId());
-        
-		String sql = "insert into follower (follower_id, followee_id) values (:follower, :followee)";
-		
-        template.update(sql,  params);
-	}
-
-	@Override
-	public void deleteFollower(User follower, User followee) {
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("follower", follower.getId());
-        params.put("followee", followee.getId());
-        
-		String sql = "delete from follower where follower_id = :follower and followee_id = :followee";
-		
-        template.update(sql,  params);
-	}
 	
-	@Override
-	public boolean isUserFollower(User follower, User followee) {
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("follower", follower.getId());
-        params.put("followee", followee.getId());
-        
-		String sql = "select count(1) from follower where " +
-            "follower.follower_id = :follower and follower.followee_id = :followee";
-		
-		Long l = template.queryForObject(sql, params, Long.class);
-		
-		return l > 0;
-	}
 
 	@Override
 	public void registerUser(User user) {

@@ -6,7 +6,6 @@ import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,28 +96,7 @@ public class WebConfig {
         }, new FreeMarkerEngine());
 		
 		
-		/*
-		 * Displays a user's tweets.
-		 */
-		get("/t/:username", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			
-			User authUser = getAuthenticatedUser(req);
-			boolean followed = false;
-			if(authUser != null) {
-				followed = service.isUserFollower(authUser, profileUser);
-			}
-			List<Bet> messages = service.getAllBets();
-			
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", username + "'s Timeline");
-			map.put("user", authUser);
-			map.put("profileUser", profileUser);
-			map.put("followed", followed);
-			map.put("messages", messages);
-			return new ModelAndView(map, "timeline.ftl");
-        }, new FreeMarkerEngine());
+		
 		/*
 		 * Checks if the user exists
 		 */
@@ -130,19 +108,7 @@ public class WebConfig {
 			}
 		});
 		
-		
-		/*
-		 * Adds the current user as follower of the given user.
-		 */
-		get("/t/:username/follow", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			User authUser = getAuthenticatedUser(req);
-			
-			service.followUser(authUser, profileUser);
-			res.redirect("/t/" + username);
-			return null;
-        });
+				
 		/*
 		 * Checks if the user is authenticated and the user to follow exists
 		 */
@@ -159,18 +125,7 @@ public class WebConfig {
 		});
 		
 		
-		/*
-		 * Removes the current user as follower of the given user.
-		 */
-		get("/t/:username/unfollow", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			User authUser = getAuthenticatedUser(req);
-			
-			service.unfollowUser(authUser, profileUser);
-			res.redirect("/t/" + username);
-			return null;
-        });
+		
 		/*
 		 * Checks if the user is authenticated and the user to unfollow exists
 		 */
