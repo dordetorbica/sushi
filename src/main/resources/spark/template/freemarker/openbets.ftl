@@ -15,7 +15,7 @@
       <td>Helmuth</td>
       <td>Trump will stay in office for at least four full years as elected</td>
       <td>Wolfgang</td>
-      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i>
+      <td><i class="fa fa-times"></i> <i class="fa fa-pencil"></i> <i class="fa fa-trash"></i>
     </tr>
     <tr>
       <td>Helmuth</td>
