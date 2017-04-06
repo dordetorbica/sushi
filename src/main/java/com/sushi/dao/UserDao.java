@@ -1,5 +1,8 @@
 package com.sushi.dao;
 
+import java.util.List;
+
+import com.sushi.model.Bet;
 import com.sushi.model.User;
 
 public interface UserDao {
@@ -13,4 +16,6 @@ public interface UserDao {
 	boolean isUserFollower(User follower, User followee);
 	
 	void registerUser(User user);
+
+	List<User> getAllUsers();
 }

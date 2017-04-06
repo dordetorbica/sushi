@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sushi.dao.UserDao;
+import com.sushi.model.Bet;
 import com.sushi.model.User;
 
 @Repository
@@ -24,6 +25,16 @@ public class UserDaoImpl implements UserDao {
 		template = new NamedParameterJdbcTemplate(ds);
 	}
 
+	@Override
+	public List<User> getAllUsers() {
+		Map<String, Object> params = new HashMap<String, Object>();
+                
+		String sql = "select * from user"; 				
+		List<User> result = template.query(sql, params, userMapper);			
+		return result;
+	}
+	
+	
 	@Override
 	public User getUserbyUsername(String username) {
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -99,6 +110,7 @@ public class UserDaoImpl implements UserDao {
 		u.setEmail(rs.getString("email"));
 		u.setUsername(rs.getString("username"));
 		u.setPassword(rs.getString("pw"));
+		u.setName(rs.getString("name"));
 		
 		return u;
 	};

@@ -13,6 +13,7 @@ public class User {
 	private String username;
 	
 	private String email;
+	private String name;
 	
 	private String password;
 	
@@ -72,5 +73,13 @@ public class User {
 		}
 		
 		return error;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
