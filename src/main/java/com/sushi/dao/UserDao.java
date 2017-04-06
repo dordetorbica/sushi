@@ -1,6 +1,6 @@
-package com.minitwit.dao;
+package com.sushi.dao;
 
-import com.minitwit.model.User;
+import com.sushi.model.User;
 
 public interface UserDao {
 

@@ -1,4 +1,4 @@
-package com.minitwit.config;
+package com.sushi.config;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
@@ -15,10 +15,10 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
-import com.minitwit.model.LoginResult;
-import com.minitwit.model.Message;
-import com.minitwit.model.User;
-import com.minitwit.service.impl.MiniTwitService;
+import com.sushi.model.LoginResult;
+import com.sushi.model.Message;
+import com.sushi.model.User;
+import com.sushi.service.impl.MiniTwitService;
 
 import spark.ModelAndView;
 import spark.Request;

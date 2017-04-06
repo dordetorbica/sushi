@@ -1,4 +1,4 @@
-package com.minitwit.util;
+package com.sushi.util;
 
 import org.mindrot.jbcrypt.BCrypt;
 

@@ -119,7 +119,7 @@
 			    	</execution>
 			  	</executions>
 			  	<configuration>
-				    <mainClass>com.minitwit.App</mainClass>
+				    <mainClass>com.sushi.App</mainClass>
 				    <arguments>
 				    </arguments>
 				</configuration>

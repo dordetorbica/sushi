@@ -1,4 +1,4 @@
-package com.minitwit.config;
+package com.sushi.config;
 
 import javax.sql.DataSource;
 

@@ -1,4 +1,4 @@
-package com.minitwit.model;
+package com.sushi.model;
 
 import java.util.regex.Pattern;
 

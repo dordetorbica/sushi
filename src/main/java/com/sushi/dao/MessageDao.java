@@ -1,9 +1,9 @@
-package com.minitwit.dao;
+package com.sushi.dao;
 
 import java.util.List;
 
-import com.minitwit.model.Message;
-import com.minitwit.model.User;
+import com.sushi.model.Message;
+import com.sushi.model.User;
 
 public interface MessageDao {
 	List<Message> getUserTimelineMessages(User user);
