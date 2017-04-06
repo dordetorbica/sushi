@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 INSERT INTO user(username, name, email, pw) VALUES ('admin','Administrator','admin@email.com','$2y$10$Yxe35TaNxLErDLmpDHrZxOIMT8P74qQGb5NER2TcRKSEDSb0KUn6G');
 INSERT INTO user(username, name, email, pw) VALUES ('dorde','Dorde Torbica','dorde.torbica@ctbto.org','$2y$10$dUFLtk8yqsicQ584aI/ZY.7exvxpmZ4zC/mzDlOyT4X.9pI0tge6C');
 INSERT INTO user(username, name, email, pw) VALUES ('helmuth','Helmuth Breitenfellner','helmuth.breitenfellner@ctbto.org','$2y$10$uI5YpyM9n0thdAukWiZnJuEKBJu4ilvLcYySGQlkR6abdOYy/jyBi');
