@@ -69,10 +69,19 @@ public class WebConfig {
 		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			User authUser = getAuthenticatedUser(req);
+			if (authUser == null) {
+				res.redirect("/lopin");
+				return null;
+			}
 			return new ModelAndView(map, "add-bet.ftl");
 		}, new FreeMarkerEngine());
 		post("/add-bet", (req, res) -> {
 			User authUser = getAuthenticatedUser(req);
+			if (authUser == null) {
+				res.redirect("/lopin");
+				return null;
+			}
 			Bet bet = new Bet();
 			try {
 				MultiMap<String> params = new MultiMap<String>();
