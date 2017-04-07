@@ -98,6 +98,10 @@ public class WebConfig {
 			map.put("authid", authUser.getId());
 			return new ModelAndView(map, "unchallenged-bets.ftl");
 		}, new FreeMarkerEngine());
+		get("accept-bet", (req, res) -> {
+			res.redirect("/bets");
+			return null;
+		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			User authUser = getAuthenticatedUser(req);
