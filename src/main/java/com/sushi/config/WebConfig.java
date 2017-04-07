@@ -199,10 +199,13 @@ public class WebConfig {
 			bet.setTitle(title);
 			bet.setDescription(description);
 			service.updateBet(bet);
-			int winner = Integer.parseInt(req.queryParams("winner"));
-			if (winner > 0) {
-				service.closeBet(id, winner);
+			try {
+				int winner = Integer.parseInt(req.queryParams("winner"));
+				if (winner > 0) {
+					service.closeBet(id, winner);
+				}
 			}
+			catch (Exception e) {}
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());
