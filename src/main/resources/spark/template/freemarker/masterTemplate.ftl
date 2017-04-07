@@ -50,7 +50,10 @@
     </ul>
     <ul class="navbar-nav navbar-right pull-right mr-auto">
       <#if authUser??> 
-        <li class="nav-item">
+        <li>
+          <small>Logged in as: ${authUser.username}</small>
+        </li>
+        <li>
           <a class="nav-link" href="/logout">Logout</a>
         </li>
 	  <#else>
