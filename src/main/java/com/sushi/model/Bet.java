@@ -12,6 +12,10 @@ public class Bet {
 	private Date pub_date;
 	private Date resolved_date;
 
+	public Bet() {
+		this.pub_date = new Date();
+	}
+	
 	public int getBet_id() {
 		return bet_id;
 	}
