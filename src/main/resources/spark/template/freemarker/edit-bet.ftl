@@ -26,7 +26,7 @@
   </div>
   <div class="form-group row">
     <label for="winner" class="col-2 col-form-label">Winner</label>
-    <select>
+    <select name="winner">
       <option value="-1">-- not yet decided --</option>
       <option value="${bet.initiator_id}">${bet.initiator}</option>
       <option value="${bet.challenger_id}">${bet.challenger}</option>
