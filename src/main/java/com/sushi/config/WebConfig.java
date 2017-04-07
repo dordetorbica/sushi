@@ -74,7 +74,7 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			User authUser = getAuthenticatedUser(req);
 			if (authUser == null) {
-				res.redirect("/lopin");
+				res.redirect("/login");
 				return null;
 			}
 			return new ModelAndView(map, "add-bet.ftl");
@@ -82,7 +82,7 @@ public class WebConfig {
 		post("/add-bet", (req, res) -> {
 			User authUser = getAuthenticatedUser(req);
 			if (authUser == null) {
-				res.redirect("/lopin");
+				res.redirect("/login");
 				return null;
 			}
 			Bet bet = new Bet();
