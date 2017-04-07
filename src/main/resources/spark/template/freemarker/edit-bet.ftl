@@ -5,11 +5,11 @@
 <form action="/edit-bet?id=${bet.bet_id}" method="POST">
   <div class="form-group">
     <label for="title">Title of the bet</label>
-    <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="${bet.title}">
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bet.title}">
   </div>
   <div class="form-group">
     <label for="description">Bet description</label>
-    <textarea class="form-control" id="description" rows="3">${bet.description}</textarea>
+    <textarea class="form-control" id="description" name="description" rows="3">${bet.description}</textarea>
   </div>
   <div class="form-group row">
   	<label for="Initiator" class="col-2 col-form-label">Initiator</label>

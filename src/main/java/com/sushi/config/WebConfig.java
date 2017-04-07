@@ -166,6 +166,7 @@ public class WebConfig {
 			String description = req.queryParams("description");
 			bet.setTitle(title);
 			bet.setDescription(description);
+			service.updateBet(bet);
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());

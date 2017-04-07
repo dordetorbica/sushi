@@ -111,7 +111,7 @@ public class BetDaoImpl implements BetDao {
         params.put("title", bet.getTitle());
         params.put("desc", bet.getDescription());        
         
-        String sql = "UPDATE bet SET winner_id =:w, title=:title,description=:desc WHERE bet_id = :bet_id";
+        String sql = "UPDATE bet SET title=:title,description=:desc WHERE bet_id = :bet_id";
 		template.update(sql, params);
 		
 	}
