@@ -45,6 +45,8 @@ public class WebConfig {
 		 */
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			User authUser = getAuthenticatedUser(req);
+			map.put("authUser", authUser);
 			List<Bet> bets = service.getAllBets();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
@@ -72,6 +74,8 @@ public class WebConfig {
 		}, new FreeMarkerEngine());
 		get("/unchallenged-bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			User authUser = getAuthenticatedUser(req);
+			map.put("authUser", authUser);
 			List<Bet> bets = service.getAllBets();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
@@ -103,6 +107,7 @@ public class WebConfig {
 				res.redirect("/login");
 				return null;
 			}
+			map.put("authUser", authUser);
 			return new ModelAndView(map, "add-bet.ftl");
 		}, new FreeMarkerEngine());
 		post("/add-bet", (req, res) -> {
@@ -127,6 +132,8 @@ public class WebConfig {
 		}, new FreeMarkerEngine());
 		get("/edit-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			User authUser = getAuthenticatedUser(req);
+			map.put("authUser", authUser);
 			int id = Integer.parseInt(req.queryParams("id"));
 			Bet bet = service.getBetbyId(id);
 			HashMap<String, Object> hm = new HashMap<>();
@@ -181,10 +188,10 @@ public class WebConfig {
 		 * Displays the latest messages of all users.
 		 */
 		get("/public", (req, res) -> {
-			User user = getAuthenticatedUser(req);
+			User authUser = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Public Timeline");
-			map.put("user", user);
+			map.put("authUser", authUser);
 			List<Bet> messages = service.getAllBets();
 			map.put("messages", messages);
 			return new ModelAndView(map, "timeline.ftl");
