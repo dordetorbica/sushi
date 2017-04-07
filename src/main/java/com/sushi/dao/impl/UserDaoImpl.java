@@ -54,6 +54,26 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 	
+	@Override
+	public User getUserbyId(int id) {
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", id);
+        
+		String sql = "SELECT * FROM user WHERE user_id=:id";
+		
+        List<User> list = template.query(
+                    sql,
+                    params,
+                    userMapper);
+        
+        User result = null;
+        if(list != null && !list.isEmpty()) {
+        	result = list.get(0);
+        }
+        
+		return result;
+	}
+	
 
 	@Override
 	public void registerUser(User user) {

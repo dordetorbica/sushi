@@ -7,6 +7,8 @@ import com.sushi.model.User;
 public interface UserDao {
 
 	User getUserbyUsername(String username);
+
+	User getUserbyId(int id);
 		
 	void registerUser(User user);
 

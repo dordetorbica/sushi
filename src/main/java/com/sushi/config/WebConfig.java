@@ -49,25 +49,21 @@ public class WebConfig {
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			List<Bet> bets = service.getAllBets();
-			List<User> users = service.getAllUsers();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
 				if (bet.getChallenger_id() > 0) {
 				HashMap<String, Object> hm = new HashMap<>();
+				int initiator_id = bet.getInitiator_id();
+				int challenger_id = bet.getChallenger_id();
+				String initiator = service.getUserbyId(initiator_id).getName();
+				String challenger = service.getUserbyId(challenger_id).getName();
 				hm.put("title",  bet.getTitle());
 				hm.put("bet_id", bet.getBet_id());
-				hm.put("initiator_id",  Integer.toString(bet.getInitiator_id()));
-				hm.put("challenger_id",  Integer.toString(bet.getChallenger_id()));
-				hm.put("initiator", Integer.toString(bet.getInitiator_id()));
-				hm.put("challenger", Integer.toString(bet.getChallenger_id()));
-				for (User user : users) {
-					if (user.getId() == bet.getInitiator_id()) {
-						hm.put("initiator", user.getName());
-					}
-					if (user.getId() == bet.getChallenger_id()) {
-						hm.put("challenger", user.getName());
-					}
-				}
+				hm.put("description", bet.getDescription());
+				hm.put("initiator_id",  Integer.toString(initiator_id));
+				hm.put("challenger_id",  Integer.toString(challenger_id));				
+				hm.put("initiator", initiator);
+				hm.put("challenger", challenger);
 				data.add(hm);
 				}
 			}
@@ -80,6 +76,21 @@ public class WebConfig {
 		}, new FreeMarkerEngine());
 		get("/edit-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			int id = Integer.parseInt(req.queryParams("id"));
+			Bet bet = service.getBetbyId(id);
+			HashMap<String, Object> hm = new HashMap<>();
+			int initiator_id = bet.getInitiator_id();
+			int challenger_id = bet.getChallenger_id();
+			String initiator = service.getUserbyId(bet.getInitiator_id()).getName();
+			String challenger = service.getUserbyId(bet.getChallenger_id()).getName();
+			hm.put("title",  bet.getTitle());
+			hm.put("description",  bet.getDescription());
+			hm.put("bet_id", bet.getBet_id());
+			hm.put("initiator_id",  Integer.toString(initiator_id));
+			hm.put("challenger_id",  Integer.toString(challenger_id));				
+			hm.put("initiator", initiator);
+			hm.put("challenger", challenger);
+			map.put("bet", hm);
 			return new ModelAndView(map, "edit-bet.ftl");
 		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
