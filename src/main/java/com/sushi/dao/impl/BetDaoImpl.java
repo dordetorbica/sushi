@@ -63,9 +63,9 @@ public class BetDaoImpl implements BetDao {
         params.put("init", bet.getInitiator_id());
         params.put("title", bet.getTitle());
         params.put("desc", bet.getDescription());
-        params.put("pubdate", bet.getPub_date());
+        // params.put("pubdate", bet.getPub_date());
         
-        String sql = "INSERT into bet(initiator_id, title, description, pub_date)  VALUES (:init,:title,:desc,:pubdate)";
+        String sql = "INSERT into bet(initiator_id, title, description, pub_date)  VALUES (:init,:title,:desc,:pubdate,current_timestamp)";
 		template.update(sql, params);
 	}
 	
