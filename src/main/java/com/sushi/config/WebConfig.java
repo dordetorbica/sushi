@@ -95,7 +95,7 @@ public class WebConfig {
 				return null;
 			}
 			bet.setInitiator_id(authUser.getId());
-			// insert the bet ...
+			service.placeBet(bet);
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());
