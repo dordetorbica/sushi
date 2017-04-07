@@ -42,15 +42,18 @@
         <a class="nav-link" href="/unchallenged-bets">Available Offers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/add-bet">Add a Bet</a>
+        <a class="nav-link" href="/closed-bets">Closed Bets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Decide a Bet</a>
+        <a class="nav-link" href="/add-bet">Add a Bet</a>
       </li>
     </ul>
     <ul class="navbar-nav navbar-right pull-right mr-auto">
-      <#if user??> 
-        <li class="nav-item">
+      <#if authUser??> 
+        <li>
+          <small>Logged in as: ${authUser.username}</small>
+        </li>
+        <li>
           <a class="nav-link" href="/logout">Logout</a>
         </li>
 	  <#else>
