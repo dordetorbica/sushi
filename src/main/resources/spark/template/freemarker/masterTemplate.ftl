@@ -49,12 +49,18 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-right pull-right mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
+      <#if user??> 
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+	  <#else>
+	    <li class="nav-item">
+	      <a class="nav-link" href="/register">Register</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="/login">Login</a>
+	    </li>
+	  </#if>
     </ul>
   </div>
 </nav>
