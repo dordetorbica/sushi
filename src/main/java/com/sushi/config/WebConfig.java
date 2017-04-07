@@ -94,6 +94,8 @@ public class WebConfig {
 				}
 			}
 			map.put("bets", data);
+			User authUser = getAuthenticatedUser(req);
+			map.put("authid", authUser.getId());
 			return new ModelAndView(map, "unchallenged-bets.ftl");
 		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
