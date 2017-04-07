@@ -24,6 +24,10 @@ public class SushiService {
 	public List<Bet> getAllBets() {
 		return betDao.getAllBets();
 	}
+	
+	public Bet getBetbyId(int id) {
+		return betDao.getBetbyId(id);
+	}
 
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();

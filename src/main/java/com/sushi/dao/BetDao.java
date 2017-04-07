@@ -8,4 +8,6 @@ public interface BetDao {
 	void insertMessage(Bet m);
 
 	List<Bet> getAllBets();
+	
+	Bet getBetbyId(int id);
 }

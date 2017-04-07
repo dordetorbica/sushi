@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sushi.dao.BetDao;
 import com.sushi.model.Bet;
+import com.sushi.model.User;
 
 @Repository
 public class BetDaoImpl implements BetDao {
@@ -29,7 +30,27 @@ public class BetDaoImpl implements BetDao {
 		Map<String, Object> params = new HashMap<String, Object>();
                 
 		String sql = "select * from bet order by pub_date"; 				
-		List<Bet> result = template.query(sql, params, messageMapper);
+		List<Bet> result = template.query(sql, params, betMapper);
+		
+		return result;
+	}
+	
+	@Override
+	public Bet getBetbyId(int id) {
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", id);
+                
+		String sql = "select * from bet where bet_id=:id"; 		
+		
+        List<Bet> list = template.query(
+                    sql,
+                    params,
+                    betMapper);
+        
+        Bet result = null;
+        if(list != null && !list.isEmpty()) {
+        	result = list.get(0);
+        }
 		
 		return result;
 	}
@@ -46,7 +67,7 @@ public class BetDaoImpl implements BetDao {
 		template.update(sql, params);
 	}
 	
-	private RowMapper<Bet> messageMapper = (rs, rowNum) -> {
+	private RowMapper<Bet> betMapper = (rs, rowNum) -> {
 		Bet bet = new Bet();
 		bet.setBet_id(rs.getInt("bet_id"));
 		bet.setInitiator_id(rs.getInt("initiator_id"));

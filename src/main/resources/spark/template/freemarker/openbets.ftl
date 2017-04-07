@@ -19,7 +19,7 @@
       <td>${bet.title}</td>
       <td>${bet.initiator}</td>
       <td>${bet.challenger}</td>
-      <td><i class="fa fa-close"></i> <a href="/edit-bet?${bet.bet_id}"><i class="fa fa-pencil"></a></i> <i class="fa fa-trash"></i></td>
+      <td><i class="fa fa-close"></i> <a href="/edit-bet?id=${bet.bet_id}"><i class="fa fa-pencil"></a></i> <i class="fa fa-trash"></i></td>
     </tr>
 </#list>
   </tbody>

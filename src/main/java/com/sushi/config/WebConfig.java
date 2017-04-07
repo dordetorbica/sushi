@@ -74,6 +74,21 @@ public class WebConfig {
 		}, new FreeMarkerEngine());
 		get("/edit-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			int id = Integer.parseInt(req.queryParams("id"));
+			Bet bet = service.getBetbyId(id);
+			HashMap<String, Object> hm = new HashMap<>();
+			int initiator_id = bet.getInitiator_id();
+			int challenger_id = bet.getChallenger_id();
+			String initiator = service.getUserbyId(bet.getInitiator_id()).getName();
+			String challenger = service.getUserbyId(bet.getChallenger_id()).getName();
+			hm.put("title",  bet.getTitle());
+			hm.put("description",  bet.getDescription());
+			hm.put("bet_id", bet.getBet_id());
+			hm.put("initiator_id",  Integer.toString(initiator_id));
+			hm.put("challenger_id",  Integer.toString(challenger_id));				
+			hm.put("initiator", initiator);
+			hm.put("challenger", challenger);
+			map.put("bet", hm);
 			return new ModelAndView(map, "edit-bet.ftl");
 		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
