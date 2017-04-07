@@ -30,9 +30,9 @@ MERGE INTO bet USING (VALUES (100, 'Donald Trump bet', 'Donald Trump will remain
 AS vals(a,b,c,d) ON bet.title = vals.b
    WHEN NOT MATCHED THEN INSERT (initiator_id, title, description, pub_date) VALUES vals.a, vals.b,vals.c,vals.d;
 
-MERGE INTO bet USING (VALUES (100, 101, 'Winning Scrum Team bet', 'Team sushi will win this contest', TIMESTAMP '2017-04-06 02:00:22'))
-AS vals(a,b,c,d,e) ON bet.title = vals.c   
-   WHEN NOT MATCHED THEN INSERT (initiator_id, challenger_id, title, description, pub_date)  VALUES vals.a, vals.b,vals.c,vals.d,vals.e;
+MERGE INTO bet USING (VALUES (100, 101, 100, 'Winning Scrum Team bet', 'Team sushi will win this contest', TIMESTAMP '2017-04-06 02:00:22'))
+AS vals(a,b,c,d,e,f) ON bet.title = vals.d   
+   WHEN NOT MATCHED THEN INSERT (initiator_id, challenger_id, winner_id, title, description, pub_date)  VALUES vals.a, vals.b,vals.c,vals.d,vals.e,vals.f;
 
 MERGE INTO bet USING (VALUES (101, 102, 'Dorde highest committer', 'By the end of this sprint Dorde will achieve the largest number of commits', TIMESTAMP '2017-04-06 02:00:22'))
 AS vals(a,b,c,d,e) ON bet.title = vals.c   
