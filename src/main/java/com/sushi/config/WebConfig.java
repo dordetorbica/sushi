@@ -79,6 +79,9 @@ public class WebConfig {
 					HashMap<String, Object> hm = new HashMap<>();
 					int initiator_id = bet.getInitiator_id();
 					String initiator = service.getUserbyId(initiator_id).getName();
+					if (initiator == null) {
+						initiator = "";
+					}
 					hm.put("title", bet.getTitle());
 					hm.put("bet_id", bet.getBet_id());
 					hm.put("description", bet.getDescription());
