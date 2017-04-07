@@ -139,8 +139,16 @@ public class WebConfig {
 			HashMap<String, Object> hm = new HashMap<>();
 			int initiator_id = bet.getInitiator_id();
 			int challenger_id = bet.getChallenger_id();
-			String initiator = service.getUserbyId(bet.getInitiator_id()).getName();
-			String challenger = service.getUserbyId(bet.getChallenger_id()).getName();
+			String initiator = "";
+			String challenger = "";
+			try {
+				initiator = service.getUserbyId(bet.getInitiator_id()).getName();
+			}
+			catch (NullPointerException e) {}
+			try {
+				challenger = service.getUserbyId(bet.getChallenger_id()).getName();
+			}
+			catch (NullPointerException e) {}
 			hm.put("title", bet.getTitle());
 			hm.put("description", bet.getDescription());
 			hm.put("bet_id", bet.getBet_id());

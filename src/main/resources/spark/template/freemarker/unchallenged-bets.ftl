@@ -17,7 +17,7 @@
       <td><b>${bet.title}</b><br><i>${bet.description}</i></td>
       <td>${bet.initiator}</td>
       <td><a href="/accept-bet?id=${bet.bet_id}">Take Challenge</a></td>
-      <td><i class="fa fa-close"></i> <a href="/edit-bet?id=${bet.bet_id}"><i class="fa fa-pencil"></a></i> <i class="fa fa-trash"></i></td>
+      <td><a href="/edit-bet?id=${bet.bet_id}"><i class="fa fa-pencil"></a></i> <a href="/delete-bet?id=${bet.bet_id}"><i class="fa fa-trash"></i></a></td>
     </tr>
 </#list>
   </tbody>

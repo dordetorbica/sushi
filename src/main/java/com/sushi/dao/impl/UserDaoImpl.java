@@ -79,10 +79,11 @@ public class UserDaoImpl implements UserDao {
 	public void registerUser(User user) {
 		Map<String, Object> params = new HashMap<String, Object>();
         params.put("username", user.getUsername());
+        params.put("name",  user.getName());
         params.put("email", user.getEmail());
         params.put("pw", user.getPassword());
         
-		String sql = "insert into user (username, email, pw) values (:username, :email, :pw)";
+		String sql = "insert into user (username, name, email, pw) values (:username, :name, :email, :pw)";
 		
         template.update(sql,  params);
 	}
