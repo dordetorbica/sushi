@@ -70,6 +70,29 @@ public class WebConfig {
 			map.put("bets", data);
 			return new ModelAndView(map, "openbets.ftl");
 		}, new FreeMarkerEngine());
+		get("/unchallenged-bets", (req, res) -> {
+			Map<String, Object> map = new HashMap<>();
+			List<Bet> bets = service.getAllBets();
+			List<Map<String, Object>> data = new ArrayList<>();
+			for (Bet bet : bets) {
+				if (bet.getChallenger_id() == 0) {
+					HashMap<String, Object> hm = new HashMap<>();
+					int initiator_id = bet.getInitiator_id();
+					String initiator = service.getUserbyId(initiator_id).getName();
+					hm.put("title", bet.getTitle());
+					hm.put("bet_id", bet.getBet_id());
+					hm.put("description", bet.getDescription());
+					if (bet.getDescription() == null) {
+						hm.put("description",  "");
+					}
+					hm.put("initiator_id", Integer.toString(initiator_id));
+					hm.put("initiator", initiator);
+					data.add(hm);
+				}
+			}
+			map.put("bets", data);
+			return new ModelAndView(map, "unchallenged-bets.ftl");
+		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			User authUser = getAuthenticatedUser(req);

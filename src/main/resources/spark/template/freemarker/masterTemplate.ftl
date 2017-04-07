@@ -39,7 +39,7 @@
         <a class="nav-link" href="/bets">Running Bets<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Available Offers</a>
+        <a class="nav-link" href="/unchallenged-bets">Available Offers</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/add-bet">Add a Bet</a>
