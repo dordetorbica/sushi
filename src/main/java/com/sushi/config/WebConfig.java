@@ -58,6 +58,7 @@ public class WebConfig {
 				String challenger = service.getUserbyId(challenger_id).getName();
 				hm.put("title",  bet.getTitle());
 				hm.put("bet_id", bet.getBet_id());
+				hm.put("description", bet.getDescription());
 				hm.put("initiator_id",  Integer.toString(initiator_id));
 				hm.put("challenger_id",  Integer.toString(challenger_id));				
 				hm.put("initiator", initiator);

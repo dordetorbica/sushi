@@ -15,8 +15,7 @@
   <tbody>
 <#list bets as bet>
     <tr>
-      <td>${bet.bet_id}</td>
-      <td>${bet.title}</td>
+      <td>${bet.description}</td>
       <td>${bet.initiator}</td>
       <td>${bet.challenger}</td>
       <td><i class="fa fa-close"></i> <a href="/edit-bet?id=${bet.bet_id}"><i class="fa fa-pencil"></a></i> <i class="fa fa-trash"></i></td>
