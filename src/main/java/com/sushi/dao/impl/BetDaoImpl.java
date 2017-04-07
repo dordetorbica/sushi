@@ -58,25 +58,36 @@ public class BetDaoImpl implements BetDao {
 
 
 	@Override
-	public void placeBet(Bet m) {
+	public void placeBet(Bet bet) {
 		Map<String, Object> params = new HashMap<String, Object>();
-       // params.put("userId", m.getUserId());
-       // params.put("text", m.getText());
-       // params.put("pubDate", m.getPubDate());
+        params.put("init", bet.getInitiator_id());
+        params.put("title", bet.getTitle());
+        params.put("desc", bet.getDescription());
+        params.put("pubdate", bet.getPub_date());
         
-        String sql = "insert into message (author_id, text, pub_date) values (:userId, :text, :pubDate)";
+        String sql = "INSERT into bet(initiator_id, title, description, pub_date)  VALUES (:init,:title,:desc,:pubdate)";
 		template.update(sql, params);
 	}
 	
 	@Override
 	public void takeChallenge(int bet_id, int challenger_id) {
-		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("bet_id", bet_id);
+        params.put("ch", challenger_id);
+             
+        String sql = "UPDATE bet SET challenger_id =:ch WHERE bet_id = :bet_id";        		
+		template.update(sql, params);
 		
 	}
 
 	@Override
 	public void closeBet(int bet_id, int winner_id) {
-		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("bet_id", bet_id);
+        params.put("w", winner_id);
+             
+        String sql = "UPDATE bet SET winner_id =:w WHERE bet_id = :bet_id";        		
+		template.update(sql, params);
 		
 	}
 	
