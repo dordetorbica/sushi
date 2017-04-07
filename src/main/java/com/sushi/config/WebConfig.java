@@ -307,7 +307,7 @@ public class WebConfig {
 		 */
 		get("/logout", (req, res) -> {
 			removeAuthenticatedUser(req);
-			res.redirect("/public");
+			res.redirect("/");
 			return null;
 		});
 
