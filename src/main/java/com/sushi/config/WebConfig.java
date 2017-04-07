@@ -99,6 +99,9 @@ public class WebConfig {
 			return new ModelAndView(map, "unchallenged-bets.ftl");
 		}, new FreeMarkerEngine());
 		get("accept-bet", (req, res) -> {
+			User authUser = getAuthenticatedUser(req);
+			int id = Integer.parseInt(req.queryParams("id"));
+			service.takeChallenge(id, authUser.getId());
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());
