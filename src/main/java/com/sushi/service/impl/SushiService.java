@@ -24,7 +24,7 @@ public class SushiService {
 	public List<Bet> getAllBets() {
 		return betDao.getAllBets();
 	}
-	
+
 	public Bet getBetbyId(int id) {
 		return betDao.getBetbyId(id);
 	}
@@ -41,8 +41,16 @@ public class SushiService {
 		return userDao.getUserbyId(id);
 	}
 
-	public void addMessage(Bet message) {
-		betDao.insertMessage(message);
+	public void placeBet(Bet bet) {
+		betDao.placeBet(bet);
+	}
+
+	public void takeChallenge(int bet_id, int challenger_id) {
+		betDao.takeChallenge(bet_id, challenger_id);
+	}
+
+	public void closeBet(int bet_id, int winner_id) {
+		betDao.closeBet(bet_id, winner_id);
 	}
 
 	public LoginResult checkUser(User user) {

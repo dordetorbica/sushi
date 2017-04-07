@@ -15,6 +15,7 @@ import com.sushi.dao.BetDao;
 import com.sushi.model.Bet;
 import com.sushi.model.User;
 
+@SuppressWarnings("unused")
 @Repository
 public class BetDaoImpl implements BetDao {
 	
@@ -57,7 +58,7 @@ public class BetDaoImpl implements BetDao {
 
 
 	@Override
-	public void insertMessage(Bet m) {
+	public void placeBet(Bet m) {
 		Map<String, Object> params = new HashMap<String, Object>();
        // params.put("userId", m.getUserId());
        // params.put("text", m.getText());
@@ -65,6 +66,18 @@ public class BetDaoImpl implements BetDao {
         
         String sql = "insert into message (author_id, text, pub_date) values (:userId, :text, :pubDate)";
 		template.update(sql, params);
+	}
+	
+	@Override
+	public void takeChallenge(int bet_id, int challenger_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeBet(int bet_id, int winner_id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	private RowMapper<Bet> betMapper = (rs, rowNum) -> {
@@ -79,5 +92,4 @@ public class BetDaoImpl implements BetDao {
 				  		 		   	
 		return bet;
 	};
-
 }

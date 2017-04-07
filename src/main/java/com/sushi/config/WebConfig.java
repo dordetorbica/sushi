@@ -26,25 +26,22 @@ import spark.Request;
 import spark.template.freemarker.FreeMarkerEngine;
 import spark.utils.StringUtils;
 
-
 public class WebConfig {
-	
+
 	private static final String USER_SESSION_ID = "user";
 	private SushiService service;
-	 
 
 	public WebConfig(SushiService service) {
 		this.service = service;
 		staticFileLocation("/public");
 		setupRoutes();
 	}
-	
+
 	private void setupRoutes() {
 		/*
-		 * Shows a users timeline or if no user is logged in,
-		 *  it will redirect to the public timeline.
-		 *  This timeline shows the user's messages as well
-		 *  as all the messages of followed users.
+		 * Shows a users timeline or if no user is logged in, it will redirect
+		 * to the public timeline. This timeline shows the user's messages as
+		 * well as all the messages of followed users.
 		 */
 		get("/bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
@@ -52,19 +49,19 @@ public class WebConfig {
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
 				if (bet.getChallenger_id() > 0) {
-				HashMap<String, Object> hm = new HashMap<>();
-				int initiator_id = bet.getInitiator_id();
-				int challenger_id = bet.getChallenger_id();
-				String initiator = service.getUserbyId(initiator_id).getName();
-				String challenger = service.getUserbyId(challenger_id).getName();
-				hm.put("title",  bet.getTitle());
-				hm.put("bet_id", bet.getBet_id());
-				hm.put("description", bet.getDescription());
-				hm.put("initiator_id",  Integer.toString(initiator_id));
-				hm.put("challenger_id",  Integer.toString(challenger_id));				
-				hm.put("initiator", initiator);
-				hm.put("challenger", challenger);
-				data.add(hm);
+					HashMap<String, Object> hm = new HashMap<>();
+					int initiator_id = bet.getInitiator_id();
+					int challenger_id = bet.getChallenger_id();
+					String initiator = service.getUserbyId(initiator_id).getName();
+					String challenger = service.getUserbyId(challenger_id).getName();
+					hm.put("title", bet.getTitle());
+					hm.put("bet_id", bet.getBet_id());
+					hm.put("description", bet.getDescription());
+					hm.put("initiator_id", Integer.toString(initiator_id));
+					hm.put("challenger_id", Integer.toString(challenger_id));
+					hm.put("initiator", initiator);
+					hm.put("challenger", challenger);
+					data.add(hm);
 				}
 			}
 			map.put("bets", data);
@@ -99,11 +96,11 @@ public class WebConfig {
 			int challenger_id = bet.getChallenger_id();
 			String initiator = service.getUserbyId(bet.getInitiator_id()).getName();
 			String challenger = service.getUserbyId(bet.getChallenger_id()).getName();
-			hm.put("title",  bet.getTitle());
-			hm.put("description",  bet.getDescription());
+			hm.put("title", bet.getTitle());
+			hm.put("description", bet.getDescription());
 			hm.put("bet_id", bet.getBet_id());
-			hm.put("initiator_id",  Integer.toString(initiator_id));
-			hm.put("challenger_id",  Integer.toString(challenger_id));				
+			hm.put("initiator_id", Integer.toString(initiator_id));
+			hm.put("challenger_id", Integer.toString(challenger_id));
 			hm.put("initiator", initiator);
 			hm.put("challenger", challenger);
 			map.put("bet", hm);
@@ -112,27 +109,26 @@ public class WebConfig {
 		get("/", (req, res) -> {
 			res.redirect("/bets");
 			return null;
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		/*
-		 * Presents the login form or redirect the user to
-		 * her timeline if it's already logged in
+		 * Presents the login form or redirect the user to her timeline if it's
+		 * already logged in
 		 */
 		get("/login", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
-			if(req.queryParams("r") != null) {
+			if (req.queryParams("r") != null) {
 				map.put("message", "You were successfully registered and can login now");
 			}
 			return new ModelAndView(map, "login.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			if(user == null) {
+			if (user == null) {
 				res.redirect("/login");
 				halt();
 			}
 		});
 
-		
 		/*
 		 * Displays the latest messages of all users.
 		 */
@@ -144,66 +140,20 @@ public class WebConfig {
 			List<Bet> messages = service.getAllBets();
 			map.put("messages", messages);
 			return new ModelAndView(map, "timeline.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		
-		
-		
+
 		/*
-		 * Checks if the user exists
-		 */
-		before("/t/:username", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			if(profileUser == null) {
-				halt(404, "User not Found");
-			}
-		});
-		
-				
-		/*
-		 * Checks if the user is authenticated and the user to follow exists
-		 */
-		before("/t/:username/follow", (req, res) -> {
-			String username = req.params(":username");
-			User authUser = getAuthenticatedUser(req);
-			User profileUser = service.getUserbyUsername(username);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			} else if(profileUser == null) {
-				halt(404, "User not Found");
-			}
-		});
-		
-		
-		
-		/*
-		 * Checks if the user is authenticated and the user to unfollow exists
-		 */
-		before("/t/:username/unfollow", (req, res) -> {
-			String username = req.params(":username");
-			User authUser = getAuthenticatedUser(req);
-			User profileUser = service.getUserbyUsername(username);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			} else if(profileUser == null) {
-				halt(404, "User not Found");
-			}
-		});
-		
-		
-		/*
-		 * Presents the login form or redirect the user to
-		 * her timeline if it's already logged in
+		 * Presents the login form or redirect the user to her timeline if it's
+		 * already logged in
 		 */
 		get("/login", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
-			if(req.queryParams("r") != null) {
+			if (req.queryParams("r") != null) {
 				map.put("message", "You were successfully registered and can login now");
 			}
 			return new ModelAndView(map, "login.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		/*
 		 * Logs the user in.
 		 */
@@ -219,7 +169,7 @@ public class WebConfig {
 				return null;
 			}
 			LoginResult result = service.checkUser(user);
-			if(result.getUser() != null) {
+			if (result.getUser() != null) {
 				addAuthenticatedUser(req, result.getUser());
 				res.redirect("/");
 				halt();
@@ -228,27 +178,26 @@ public class WebConfig {
 			}
 			map.put("username", user.getUsername());
 			return new ModelAndView(map, "login.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		/*
 		 * Checks if the user is already authenticated
 		 */
 		before("/login", (req, res) -> {
 			User authUser = getAuthenticatedUser(req);
-			if(authUser != null) {
+			if (authUser != null) {
 				res.redirect("/");
 				halt();
 			}
 		});
-		
-		
+
 		/*
-		 * Presents the register form or redirect the user to
-		 * her timeline if it's already logged in
+		 * Presents the register form or redirect the user to her timeline if
+		 * it's already logged in
 		 */
 		get("/register", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			return new ModelAndView(map, "register.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		/*
 		 * Registers the user.
 		 */
@@ -264,9 +213,9 @@ public class WebConfig {
 				return null;
 			}
 			String error = user.validate();
-			if(StringUtils.isEmpty(error)) {
+			if (StringUtils.isEmpty(error)) {
 				User existingUser = service.getUserbyUsername(user.getUsername());
-				if(existingUser == null) {
+				if (existingUser == null) {
 					service.registerUser(user);
 					res.redirect("/login?r=1");
 					halt();
@@ -278,46 +227,18 @@ public class WebConfig {
 			map.put("username", user.getUsername());
 			map.put("email", user.getEmail());
 			return new ModelAndView(map, "register.ftl");
-        }, new FreeMarkerEngine());
+		}, new FreeMarkerEngine());
 		/*
 		 * Checks if the user is already authenticated
 		 */
 		before("/register", (req, res) -> {
 			User authUser = getAuthenticatedUser(req);
-			if(authUser != null) {
+			if (authUser != null) {
 				res.redirect("/");
 				halt();
 			}
 		});
-		
-		
-		/*
-		 * Registers a new message for the user.
-		 */
-		post("/message", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			MultiMap<String> params = new MultiMap<String>();
-			UrlEncoded.decodeTo(req.body(), params, "UTF-8");
-			Bet m = new Bet();
-			//m.setUserId(user.getId());
-			//m.setPubDate(new Date());
-			BeanUtils.populate(m, params);
-			service.addMessage(m);
-			res.redirect("/");
-			return null;
-        });
-		/*
-		 * Checks if the user is authenticated
-		 */
-		before("/message", (req, res) -> {
-			User authUser = getAuthenticatedUser(req);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			}
-		});
-		
-		
+
 		/*
 		 * Logs the user out and redirects to the public timeline
 		 */
@@ -325,23 +246,22 @@ public class WebConfig {
 			removeAuthenticatedUser(req);
 			res.redirect("/public");
 			return null;
-        });
-		
-		after((request, response) -> {
-		    response.header("Content-Encoding", "gzip");
 		});
 
-	
+		after((request, response) -> {
+			response.header("Content-Encoding", "gzip");
+		});
+
 	}
 
 	private void addAuthenticatedUser(Request request, User u) {
 		request.session().attribute(USER_SESSION_ID, u);
-		
+
 	}
 
 	private void removeAuthenticatedUser(Request request) {
 		request.session().removeAttribute(USER_SESSION_ID);
-		
+
 	}
 
 	private User getAuthenticatedUser(Request request) {
