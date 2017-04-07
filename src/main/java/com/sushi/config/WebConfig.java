@@ -57,6 +57,9 @@ public class WebConfig {
 					hm.put("title", bet.getTitle());
 					hm.put("bet_id", bet.getBet_id());
 					hm.put("description", bet.getDescription());
+					if (bet.getDescription() == null) {
+						hm.put("description",  "");
+					}
 					hm.put("initiator_id", Integer.toString(initiator_id));
 					hm.put("challenger_id", Integer.toString(challenger_id));
 					hm.put("initiator", initiator);
