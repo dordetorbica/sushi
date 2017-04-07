@@ -96,6 +96,7 @@ public class BetDaoImpl implements BetDao {
 		bet.setBet_id(rs.getInt("bet_id"));
 		bet.setInitiator_id(rs.getInt("initiator_id"));
 		bet.setChallenger_id(rs.getInt("challenger_id"));  
+		bet.setWinner_id(rs.getInt("winner_id"));  
 		bet.setTitle(rs.getString("title"));
 		bet.setDescription(rs.getString("description"));
 		bet.setPub_date(rs.getTimestamp("pub_date"));
