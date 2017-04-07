@@ -118,6 +118,16 @@ public class WebConfig {
 			map.put("bet", hm);
 			return new ModelAndView(map, "edit-bet.ftl");
 		}, new FreeMarkerEngine());
+		post("/edit-bet", (req, res) -> {
+			int id = Integer.parseInt(req.queryParams("id"));
+			Bet bet = service.getBetbyId(id);
+			String title = req.queryParams("title");
+			String description = req.queryParams("description");
+			bet.setTitle(title);
+			bet.setDescription(description);
+			res.redirect("/bets");
+			return null;
+		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
 			res.redirect("/bets");
 			return null;
