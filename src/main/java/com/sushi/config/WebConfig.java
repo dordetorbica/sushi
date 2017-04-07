@@ -5,6 +5,7 @@ import static spark.Spark.get;
 import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
+import static spark.Spark.after;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -298,6 +299,12 @@ public class WebConfig {
 			res.redirect("/public");
 			return null;
         });
+		
+		after((request, response) -> {
+		    response.header("Content-Encoding", "gzip");
+		});
+
+	
 	}
 
 	private void addAuthenticatedUser(Request request, User u) {
