@@ -74,6 +74,22 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			return new ModelAndView(map, "add-bet.ftl");
 		}, new FreeMarkerEngine());
+		post("/add-bet", (req, res) -> {
+			User authUser = getAuthenticatedUser(req);
+			Bet bet = new Bet();
+			try {
+				MultiMap<String> params = new MultiMap<String>();
+				UrlEncoded.decodeTo(req.body(), params, "UTF-8");
+				BeanUtils.populate(bet, params);
+			} catch (Exception e) {
+				halt(501);
+				return null;
+			}
+			bet.setInitiator_id(authUser.getId());
+			// insert the bet ...
+			res.redirect("/bets");
+			return null;
+		}, new FreeMarkerEngine());
 		get("/edit-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			int id = Integer.parseInt(req.queryParams("id"));
