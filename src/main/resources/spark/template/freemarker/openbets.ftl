@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Bet</th>
       <th>In Favor</th>
       <th>Against</th>
