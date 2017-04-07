@@ -11,20 +11,28 @@
     <label for="description">Bet description</label>
     <textarea class="form-control" id="description" name="description" rows="3">${bet.description}</textarea>
   </div>
-  <div class="form-group row">
-  	<label for="Initiator" class="col-2 col-form-label">Initiator</label>
+  <div class="row">
+  	<div class="col-2 col-form-label">Initiator</div>
 	<div class="col-10">
-		<input class="form-control" type="text" value="${bet.initiator}" id="initiator">
+	    ${bet.initiator}
 	</div>
   </div>
-  
-  <div class="form-group row">
-  	<label for="Chalenger" class="col-2 col-form-label">Chalenger</label>
+  <#if bet.challenger != "">
+  <div class="row">
+  	<div class="col-2 col-form-label">Challenger</div>
 	<div class="col-10">
-		<input class="form-control" type="text" value="${bet.challenger}" id="challenger">
+		${bet.challenger}
 	</div>
   </div>
-  
+  <div class="form-group row">
+    <label for="winner" class="col-2 col-form-label">Winner</label>
+    <select name="winner">
+      <option value="-1">-- not yet decided --</option>
+      <option value="${bet.initiator_id}">${bet.initiator}</option>
+      <option value="${bet.challenger_id}">${bet.challenger}</option>
+    </select>
+  </div>
+  </#if>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </@layout.masterTemplate>

@@ -100,6 +100,13 @@ public class WebConfig {
 			map.put("bets", data);
 			return new ModelAndView(map, "unchallenged-bets.ftl");
 		}, new FreeMarkerEngine());
+		get("accept-bet", (req, res) -> {
+			User authUser = getAuthenticatedUser(req);
+			int id = Integer.parseInt(req.queryParams("id"));
+			service.takeChallenge(id, authUser.getId());
+			res.redirect("/bets");
+			return null;
+		}, new FreeMarkerEngine());
 		get("/add-bet", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
 			User authUser = getAuthenticatedUser(req);
@@ -167,6 +174,10 @@ public class WebConfig {
 			bet.setTitle(title);
 			bet.setDescription(description);
 			service.updateBet(bet);
+			int winner = Integer.parseInt(req.queryParams("winner"));
+			if (winner > 0) {
+				service.closeBet(id, winner);
+			}
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());
