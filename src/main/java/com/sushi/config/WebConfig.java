@@ -169,6 +169,15 @@ public class WebConfig {
 			res.redirect("/bets");
 			return null;
 		}, new FreeMarkerEngine());
+		get("/accept-bet", (req, res) -> {
+			int bet_id = Integer.parseInt(req.queryParams("bet_id"));
+			int user_id = Integer.parseInt(req.queryParams("user_id"));
+			Bet bet = service.getBetbyId(bet_id);
+			bet.setChallenger_id(user_id);
+			service.updateChallenger(bet);
+			res.redirect("/bets");
+			return null;
+		}, new FreeMarkerEngine());
 		get("/", (req, res) -> {
 			res.redirect("/bets");
 			return null;

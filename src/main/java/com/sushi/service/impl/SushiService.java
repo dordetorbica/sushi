@@ -48,6 +48,10 @@ public class SushiService {
 	public void updateBet(Bet bet) {
 		betDao.updateBet(bet);
 	}
+
+	public void updateChallenger(Bet bet) {
+		betDao.updateChallenger(bet);
+	}
 	
 	public void takeChallenge(int bet_id, int challenger_id) {
 		betDao.takeChallenge(bet_id, challenger_id);

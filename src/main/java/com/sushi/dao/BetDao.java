@@ -16,6 +16,7 @@ public interface BetDao {
 	void closeBet(int bet_id, int winner_id);
 
 	void updateBet(Bet bet);
-	
-	
+
+	void updateChallenger(Bet bet);
+		
 }
