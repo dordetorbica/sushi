@@ -49,7 +49,7 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-right pull-right mr-auto">
-      <#if user??> 
+      <#if authUser??> 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
