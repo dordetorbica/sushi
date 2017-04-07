@@ -5,7 +5,7 @@
 <form action="/edit-bet?id=${bet.bet_id}" method="POST">
   <div class="form-group">
     <label for="title">Title of the bet</label>
-    <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" placeholder="${bet.title}">
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bet.title}">
   </div>
   <div class="form-group">
     <label for="description">Bet description</label>
