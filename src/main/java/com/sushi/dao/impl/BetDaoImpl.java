@@ -103,4 +103,16 @@ public class BetDaoImpl implements BetDao {
 				  		 		   	
 		return bet;
 	};
+
+	@Override
+	public void updateBet(Bet bet) {
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("bet_id", bet.getBet_id());
+        params.put("title", bet.getTitle());
+        params.put("desc", bet.getDescription());        
+        
+        String sql = "UPDATE bet SET winner_id =:w, title=:title,description=:desc WHERE bet_id = :bet_id";
+		template.update(sql, params);
+		
+	}
 }
