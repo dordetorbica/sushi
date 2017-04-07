@@ -42,10 +42,10 @@
         <a class="nav-link" href="/unchallenged-bets">Available Offers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/add-bet">Add a Bet</a>
+        <a class="nav-link" href="/closed-bets">Closed Bets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Decide a Bet</a>
+        <a class="nav-link" href="/add-bet">Add a Bet</a>
       </li>
     </ul>
     <ul class="navbar-nav navbar-right pull-right mr-auto">

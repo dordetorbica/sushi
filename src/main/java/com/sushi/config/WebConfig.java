@@ -48,7 +48,7 @@ public class WebConfig {
 			List<Bet> bets = service.getAllBets();
 			List<Map<String, Object>> data = new ArrayList<>();
 			for (Bet bet : bets) {
-				if (bet.getChallenger_id() > 0) {
+				if (bet.getChallenger_id() > 0 && bet.getWinner_id() <= 0) {
 					HashMap<String, Object> hm = new HashMap<>();
 					int initiator_id = bet.getInitiator_id();
 					int challenger_id = bet.getChallenger_id();
@@ -69,6 +69,37 @@ public class WebConfig {
 			}
 			map.put("bets", data);
 			return new ModelAndView(map, "openbets.ftl");
+		}, new FreeMarkerEngine());
+		get("/closed-bets", (req, res) -> {
+			Map<String, Object> map = new HashMap<>();
+			List<Bet> bets = service.getAllBets();
+			List<Map<String, Object>> data = new ArrayList<>();
+			for (Bet bet : bets) {
+				if (bet.getChallenger_id() > 0 && bet.getWinner_id() > 0) {
+					HashMap<String, Object> hm = new HashMap<>();
+					int initiator_id = bet.getInitiator_id();
+					int challenger_id = bet.getChallenger_id();
+					int winner_id = bet.getWinner_id();
+					String initiator = service.getUserbyId(initiator_id).getName();
+					String challenger = service.getUserbyId(challenger_id).getName();
+					String winner = service.getUserbyId(winner_id).getName();
+					hm.put("title", bet.getTitle());
+					hm.put("bet_id", bet.getBet_id());
+					hm.put("description", bet.getDescription());
+					if (bet.getDescription() == null) {
+						hm.put("description",  "");
+					}
+					hm.put("initiator_id", Integer.toString(initiator_id));
+					hm.put("challenger_id", Integer.toString(challenger_id));
+					hm.put("winner_id", Integer.toString(winner_id));
+					hm.put("initiator", initiator);
+					hm.put("challenger", challenger);
+					hm.put("winner", winner);
+					data.add(hm);
+				}
+			}
+			map.put("bets", data);
+			return new ModelAndView(map, "closedbets.ftl");
 		}, new FreeMarkerEngine());
 		get("/unchallenged-bets", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();

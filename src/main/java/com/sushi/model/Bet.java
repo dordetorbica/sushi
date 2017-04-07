@@ -11,6 +11,7 @@ public class Bet {
 	private String description;
 	private Date pub_date;
 	private Date resolved_date;
+	private int winner_id;
 
 	public Bet() {
 		this.pub_date = new Date();
@@ -32,6 +33,14 @@ public class Bet {
 		this.initiator_id = initiator_id;
 	}
 
+	public int getWinner_id() {
+		return winner_id;
+	}
+	
+	public void setWinner_id(int winner_id) {
+		this.winner_id = winner_id;
+	}
+	
 	public int getChallenger_id() {
 		return challenger_id;
 	}
